@@ -7,18 +7,30 @@ import java.util.Objects;
 
 @Entity
 public class Discount {
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "ID")
+    private long id;
+    @Basic
+    @Column(name = "DISCOUNTVALUE")
     private BigInteger discountvalue;
+    @Basic
+    @Column(name = "STARTDATE")
     private Timestamp startdate;
+    @Basic
+    @Column(name = "ENDDATE")
     private Timestamp enddate;
+    @Basic
+    @Column(name = "PUBLISH")
     private String publish;
+    @Basic
+    @Column(name = "DESCRIPTION")
     private String description;
+    @Basic
+    @Column(name = "DISCOUNTCODE")
     private String discountcode;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -26,12 +38,6 @@ public class Discount {
         this.id = id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Basic
-    @Column(name = "DISCOUNTVALUE")
     public BigInteger getDiscountvalue() {
         return discountvalue;
     }
@@ -40,8 +46,6 @@ public class Discount {
         this.discountvalue = discountvalue;
     }
 
-    @Basic
-    @Column(name = "STARTDATE")
     public Timestamp getStartdate() {
         return startdate;
     }
@@ -50,8 +54,6 @@ public class Discount {
         this.startdate = startdate;
     }
 
-    @Basic
-    @Column(name = "ENDDATE")
     public Timestamp getEnddate() {
         return enddate;
     }
@@ -60,8 +62,6 @@ public class Discount {
         this.enddate = enddate;
     }
 
-    @Basic
-    @Column(name = "PUBLISH")
     public String getPublish() {
         return publish;
     }
@@ -70,8 +70,6 @@ public class Discount {
         this.publish = publish;
     }
 
-    @Basic
-    @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
     }
@@ -80,8 +78,6 @@ public class Discount {
         this.description = description;
     }
 
-    @Basic
-    @Column(name = "DISCOUNTCODE")
     public String getDiscountcode() {
         return discountcode;
     }
@@ -95,7 +91,7 @@ public class Discount {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Discount discount = (Discount) o;
-        return Objects.equals(id, discount.id) && Objects.equals(discountvalue, discount.discountvalue) && Objects.equals(startdate, discount.startdate) && Objects.equals(enddate, discount.enddate) && Objects.equals(publish, discount.publish) && Objects.equals(description, discount.description) && Objects.equals(discountcode, discount.discountcode);
+        return id == discount.id && Objects.equals(discountvalue, discount.discountvalue) && Objects.equals(startdate, discount.startdate) && Objects.equals(enddate, discount.enddate) && Objects.equals(publish, discount.publish) && Objects.equals(description, discount.description) && Objects.equals(discountcode, discount.discountcode);
     }
 
     @Override

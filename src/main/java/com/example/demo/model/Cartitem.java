@@ -1,21 +1,29 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 public class Cartitem {
-    private Long id;
-    private long cartid;
-    private Long productid;
-    private Long packageid;
-    private Long productqty;
-    private Long packageqty;
-
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Column(name = "ID")
-    public Long getId() {
+    private long id;
+    @Basic
+    @Column(name = "CARTID")
+    private long cartid;
+    @Basic
+    @Column(name = "DIAGNOSTICID")
+    private long diagnosticid;
+    @Basic
+    @Column(name = "RESULT")
+    private String result;
+    @Basic
+    @Column(name = "UPDATED")
+    private Timestamp updated;
+
+    public long getId() {
         return id;
     }
 
@@ -23,12 +31,6 @@ public class Cartitem {
         this.id = id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Basic
-    @Column(name = "CARTID")
     public long getCartid() {
         return cartid;
     }
@@ -37,44 +39,28 @@ public class Cartitem {
         this.cartid = cartid;
     }
 
-    @Basic
-    @Column(name = "PRODUCTID")
-    public Long getProductid() {
-        return productid;
+    public long getDiagnosticid() {
+        return diagnosticid;
     }
 
-    public void setProductid(Long productid) {
-        this.productid = productid;
+    public void setDiagnosticid(long diagnosticid) {
+        this.diagnosticid = diagnosticid;
     }
 
-    @Basic
-    @Column(name = "PACKAGEID")
-    public Long getPackageid() {
-        return packageid;
+    public String getResult() {
+        return result;
     }
 
-    public void setPackageid(Long packageid) {
-        this.packageid = packageid;
+    public void setResult(String result) {
+        this.result = result;
     }
 
-    @Basic
-    @Column(name = "PRODUCTQTY")
-    public Long getProductqty() {
-        return productqty;
+    public Timestamp getUpdated() {
+        return updated;
     }
 
-    public void setProductqty(Long productqty) {
-        this.productqty = productqty;
-    }
-
-    @Basic
-    @Column(name = "PACKAGEQTY")
-    public Long getPackageqty() {
-        return packageqty;
-    }
-
-    public void setPackageqty(Long packageqty) {
-        this.packageqty = packageqty;
+    public void setUpdated(Timestamp updated) {
+        this.updated = updated;
     }
 
     @Override
@@ -82,11 +68,11 @@ public class Cartitem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cartitem cartitem = (Cartitem) o;
-        return cartid == cartitem.cartid && Objects.equals(id, cartitem.id) && Objects.equals(productid, cartitem.productid) && Objects.equals(packageid, cartitem.packageid) && Objects.equals(productqty, cartitem.productqty) && Objects.equals(packageqty, cartitem.packageqty);
+        return id == cartitem.id && cartid == cartitem.cartid && diagnosticid == cartitem.diagnosticid && Objects.equals(result, cartitem.result) && Objects.equals(updated, cartitem.updated);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, cartid, productid, packageid, productqty, packageqty);
+        return Objects.hash(id, cartid, diagnosticid, result, updated);
     }
 }

@@ -6,17 +6,32 @@ import java.util.Objects;
 
 @Entity
 public class User {
-    private String id;
-    private String firstname;
-    private String role;
-    private String picture;
-    private String gender;
-    private String lastname;
-    private Timestamp birthdate;
-    private Timestamp createaccountdate;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ID")
+    private String id;
+    @Basic
+    @Column(name = "FIRSTNAME")
+    private String firstname;
+    @Basic
+    @Column(name = "LASTNAME")
+    private String lastname;
+    @Basic
+    @Column(name = "ROLE")
+    private String role;
+    @Basic
+    @Column(name = "PICTURE")
+    private String picture;
+    @Basic
+    @Column(name = "GENDER")
+    private String gender;
+    @Basic
+    @Column(name = "BIRTHDATE")
+    private Timestamp birthdate;
+    @Basic
+    @Column(name = "CREATED")
+    private Timestamp created;
+
     public String getId() {
         return id;
     }
@@ -25,9 +40,6 @@ public class User {
         this.id = id;
     }
 
-
-    @Basic
-    @Column(name = "FIRSTNAME")
     public String getFirstname() {
         return firstname;
     }
@@ -36,38 +48,6 @@ public class User {
         this.firstname = firstname;
     }
 
-    @Basic
-    @Column(name = "ROLE")
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    @Basic
-    @Column(name = "PICTURE")
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    @Basic
-    @Column(name = "GENDER")
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    @Basic
-    @Column(name = "LASTNAME")
     public String getLastname() {
         return lastname;
     }
@@ -76,8 +56,30 @@ public class User {
         this.lastname = lastname;
     }
 
-    @Basic
-    @Column(name = "BIRTHDATE")
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public Timestamp getBirthdate() {
         return birthdate;
     }
@@ -86,14 +88,12 @@ public class User {
         this.birthdate = birthdate;
     }
 
-    @Basic
-    @Column(name = "CREATEACCOUNTDATE")
-    public Timestamp getCreateaccountdate() {
-        return createaccountdate;
+    public Timestamp getCreated() {
+        return created;
     }
 
-    public void setCreateaccountdate(Timestamp createaccountdate) {
-        this.createaccountdate = createaccountdate;
+    public void setCreated(Timestamp created) {
+        this.created = created;
     }
 
     @Override
@@ -101,11 +101,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(firstname, user.firstname) && Objects.equals(role, user.role) && Objects.equals(picture, user.picture) && Objects.equals(gender, user.gender) && Objects.equals(lastname, user.lastname) && Objects.equals(birthdate, user.birthdate) && Objects.equals(createaccountdate, user.createaccountdate);
+        return Objects.equals(id, user.id) && Objects.equals(firstname, user.firstname) && Objects.equals(lastname, user.lastname) && Objects.equals(role, user.role) && Objects.equals(picture, user.picture) && Objects.equals(gender, user.gender) && Objects.equals(birthdate, user.birthdate) && Objects.equals(created, user.created);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstname, role, picture, gender, lastname, birthdate, createaccountdate);
+        return Objects.hash(id, firstname, lastname, role, picture, gender, birthdate, created);
     }
 }

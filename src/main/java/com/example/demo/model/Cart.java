@@ -6,21 +6,42 @@ import java.util.Objects;
 
 @Entity
 public class Cart {
-    private Long id;
-    private String status;
-    private String userid;
-    private Long paymentid;
-    private Long shippingid;
-    private Timestamp checkoutdate;
-    private String orderstatus;
-    private Double total;
-    private Long discountid;
-    private Long shippingcost;
-
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Column(name = "ID")
-    public Long getId() {
+    private long id;
+    @Basic
+    @Column(name = "USERID")
+    private String userid;
+    @Basic
+    @Column(name = "PATIENTID")
+    private long patientid;
+    @Basic
+    @Column(name = "PHYSICIANID")
+    private long physicianid;
+    @Basic
+    @Column(name = "REPID")
+    private long repid;
+    @Basic
+    @Column(name = "DISCOUNTID")
+    private Long discountid;
+    @Basic
+    @Column(name = "TOTAL")
+    private Double total;
+    @Basic
+    @Column(name = "DISCOUNT")
+    private Double discount;
+    @Basic
+    @Column(name = "STATUS")
+    private String status;
+    @Basic
+    @Column(name = "CREATED")
+    private Timestamp created;
+    @Basic
+    @Column(name = "UPDATED")
+    private Timestamp updated;
+
+    public long getId() {
         return id;
     }
 
@@ -28,22 +49,6 @@ public class Cart {
         this.id = id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Basic
-    @Column(name = "STATUS")
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    @Basic
-    @Column(name = "USERID")
     public String getUserid() {
         return userid;
     }
@@ -52,58 +57,30 @@ public class Cart {
         this.userid = userid;
     }
 
-    @Basic
-    @Column(name = "PAYMENTID")
-    public Long getPaymentid() {
-        return paymentid;
+    public long getPatientid() {
+        return patientid;
     }
 
-    public void setPaymentid(Long paymentid) {
-        this.paymentid = paymentid;
+    public void setPatientid(long patientid) {
+        this.patientid = patientid;
     }
 
-    @Basic
-    @Column(name = "SHIPPINGID")
-    public Long getShippingid() {
-        return shippingid;
+    public long getPhysicianid() {
+        return physicianid;
     }
 
-    public void setShippingid(Long shippingid) {
-        this.shippingid = shippingid;
+    public void setPhysicianid(long physicianid) {
+        this.physicianid = physicianid;
     }
 
-    @Basic
-    @Column(name = "CHECKOUTDATE")
-    public Timestamp getCheckoutdate() {
-        return checkoutdate;
+    public long getRepid() {
+        return repid;
     }
 
-    public void setCheckoutdate(Timestamp checkoutdate) {
-        this.checkoutdate = checkoutdate;
+    public void setRepid(long repid) {
+        this.repid = repid;
     }
 
-    @Basic
-    @Column(name = "ORDERSTATUS")
-    public String getOrderstatus() {
-        return orderstatus;
-    }
-
-    public void setOrderstatus(String orderstatus) {
-        this.orderstatus = orderstatus;
-    }
-
-    @Basic
-    @Column(name = "TOTAL")
-    public Double getTotal() {
-        return total;
-    }
-
-    public void setTotal(Double total) {
-        this.total = total;
-    }
-
-    @Basic
-    @Column(name = "DISCOUNTID")
     public Long getDiscountid() {
         return discountid;
     }
@@ -112,14 +89,44 @@ public class Cart {
         this.discountid = discountid;
     }
 
-    @Basic
-    @Column(name = "SHIPPINGCOST")
-    public Long getShippingcost() {
-        return shippingcost;
+    public Double getTotal() {
+        return total;
     }
 
-    public void setShippingcost(Long shippingcost) {
-        this.shippingcost = shippingcost;
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Timestamp getCreated() {
+        return created;
+    }
+
+    public void setCreated(Timestamp created) {
+        this.created = created;
+    }
+
+    public Timestamp getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Timestamp updated) {
+        this.updated = updated;
     }
 
     @Override
@@ -127,11 +134,11 @@ public class Cart {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cart cart = (Cart) o;
-        return Objects.equals(id, cart.id) && Objects.equals(status, cart.status) && Objects.equals(userid, cart.userid) && Objects.equals(paymentid, cart.paymentid) && Objects.equals(shippingid, cart.shippingid) && Objects.equals(checkoutdate, cart.checkoutdate) && Objects.equals(orderstatus, cart.orderstatus) && Objects.equals(total, cart.total) && Objects.equals(discountid, cart.discountid) && Objects.equals(shippingcost, cart.shippingcost);
+        return id == cart.id && patientid == cart.patientid && physicianid == cart.physicianid && repid == cart.repid && Objects.equals(userid, cart.userid) && Objects.equals(discountid, cart.discountid) && Objects.equals(total, cart.total) && Objects.equals(discount, cart.discount) && Objects.equals(status, cart.status) && Objects.equals(created, cart.created) && Objects.equals(updated, cart.updated);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, status, userid, paymentid, shippingid, checkoutdate, orderstatus, total, discountid, shippingcost);
+        return Objects.hash(id, userid, patientid, physicianid, repid, discountid, total, discount, status, created, updated);
     }
 }
