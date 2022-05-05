@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
@@ -14,14 +13,17 @@ public class Cartitem {
     @Column(name = "CARTID")
     private long cartid;
     @Basic
-    @Column(name = "DIAGNOSTICID")
-    private long diagnosticid;
+    @Column(name = "PRODUCTID")
+    private Long productid;
     @Basic
-    @Column(name = "RESULT")
-    private String result;
+    @Column(name = "PACKAGEID")
+    private Long packageid;
     @Basic
-    @Column(name = "UPDATED")
-    private Timestamp updated;
+    @Column(name = "PRODUCTQTY")
+    private Long productqty;
+    @Basic
+    @Column(name = "PACKAGEQTY")
+    private Long packageqty;
 
     public long getId() {
         return id;
@@ -39,28 +41,36 @@ public class Cartitem {
         this.cartid = cartid;
     }
 
-    public long getDiagnosticid() {
-        return diagnosticid;
+    public Long getProductid() {
+        return productid;
     }
 
-    public void setDiagnosticid(long diagnosticid) {
-        this.diagnosticid = diagnosticid;
+    public void setProductid(Long productid) {
+        this.productid = productid;
     }
 
-    public String getResult() {
-        return result;
+    public Long getPackageid() {
+        return packageid;
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public void setPackageid(Long packageid) {
+        this.packageid = packageid;
     }
 
-    public Timestamp getUpdated() {
-        return updated;
+    public Long getProductqty() {
+        return productqty;
     }
 
-    public void setUpdated(Timestamp updated) {
-        this.updated = updated;
+    public void setProductqty(Long productqty) {
+        this.productqty = productqty;
+    }
+
+    public Long getPackageqty() {
+        return packageqty;
+    }
+
+    public void setPackageqty(Long packageqty) {
+        this.packageqty = packageqty;
     }
 
     @Override
@@ -68,11 +78,11 @@ public class Cartitem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cartitem cartitem = (Cartitem) o;
-        return id == cartitem.id && cartid == cartitem.cartid && diagnosticid == cartitem.diagnosticid && Objects.equals(result, cartitem.result) && Objects.equals(updated, cartitem.updated);
+        return id == cartitem.id && cartid == cartitem.cartid && Objects.equals(productid, cartitem.productid) && Objects.equals(packageid, cartitem.packageid) && Objects.equals(productqty, cartitem.productqty) && Objects.equals(packageqty, cartitem.packageqty);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, cartid, diagnosticid, result, updated);
+        return Objects.hash(id, cartid, productid, packageid, productqty, packageqty);
     }
 }

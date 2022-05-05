@@ -11,35 +11,32 @@ public class Cart {
     @Column(name = "ID")
     private long id;
     @Basic
+    @Column(name = "STATUS")
+    private String status;
+    @Basic
     @Column(name = "USERID")
     private String userid;
     @Basic
-    @Column(name = "PATIENTID")
-    private long patientid;
+    @Column(name = "PAYMENTID")
+    private Long paymentid;
     @Basic
-    @Column(name = "PHYSICIANID")
-    private long physicianid;
+    @Column(name = "SHIPPINGID")
+    private Long shippingid;
     @Basic
-    @Column(name = "REPID")
-    private long repid;
+    @Column(name = "CHECKOUTDATE")
+    private Timestamp checkoutdate;
     @Basic
-    @Column(name = "DISCOUNTID")
-    private Long discountid;
+    @Column(name = "ORDERSTATUS")
+    private String orderstatus;
     @Basic
     @Column(name = "TOTAL")
     private Double total;
     @Basic
-    @Column(name = "DISCOUNT")
-    private Double discount;
+    @Column(name = "DISCOUNTID")
+    private Long discountid;
     @Basic
-    @Column(name = "STATUS")
-    private String status;
-    @Basic
-    @Column(name = "CREATED")
-    private Timestamp created;
-    @Basic
-    @Column(name = "UPDATED")
-    private Timestamp updated;
+    @Column(name = "SHIPPINGCOST")
+    private Long shippingcost;
 
     public long getId() {
         return id;
@@ -47,62 +44,6 @@ public class Cart {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
-
-    public long getPatientid() {
-        return patientid;
-    }
-
-    public void setPatientid(long patientid) {
-        this.patientid = patientid;
-    }
-
-    public long getPhysicianid() {
-        return physicianid;
-    }
-
-    public void setPhysicianid(long physicianid) {
-        this.physicianid = physicianid;
-    }
-
-    public long getRepid() {
-        return repid;
-    }
-
-    public void setRepid(long repid) {
-        this.repid = repid;
-    }
-
-    public Long getDiscountid() {
-        return discountid;
-    }
-
-    public void setDiscountid(Long discountid) {
-        this.discountid = discountid;
-    }
-
-    public Double getTotal() {
-        return total;
-    }
-
-    public void setTotal(Double total) {
-        this.total = total;
-    }
-
-    public Double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Double discount) {
-        this.discount = discount;
     }
 
     public String getStatus() {
@@ -113,20 +54,68 @@ public class Cart {
         this.status = status;
     }
 
-    public Timestamp getCreated() {
-        return created;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setCreated(Timestamp created) {
-        this.created = created;
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
-    public Timestamp getUpdated() {
-        return updated;
+    public Long getPaymentid() {
+        return paymentid;
     }
 
-    public void setUpdated(Timestamp updated) {
-        this.updated = updated;
+    public void setPaymentid(Long paymentid) {
+        this.paymentid = paymentid;
+    }
+
+    public Long getShippingid() {
+        return shippingid;
+    }
+
+    public void setShippingid(Long shippingid) {
+        this.shippingid = shippingid;
+    }
+
+    public Timestamp getCheckoutdate() {
+        return checkoutdate;
+    }
+
+    public void setCheckoutdate(Timestamp checkoutdate) {
+        this.checkoutdate = checkoutdate;
+    }
+
+    public String getOrderstatus() {
+        return orderstatus;
+    }
+
+    public void setOrderstatus(String orderstatus) {
+        this.orderstatus = orderstatus;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public Long getDiscountid() {
+        return discountid;
+    }
+
+    public void setDiscountid(Long discountid) {
+        this.discountid = discountid;
+    }
+
+    public Long getShippingcost() {
+        return shippingcost;
+    }
+
+    public void setShippingcost(Long shippingcost) {
+        this.shippingcost = shippingcost;
     }
 
     @Override
@@ -134,11 +123,11 @@ public class Cart {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cart cart = (Cart) o;
-        return id == cart.id && patientid == cart.patientid && physicianid == cart.physicianid && repid == cart.repid && Objects.equals(userid, cart.userid) && Objects.equals(discountid, cart.discountid) && Objects.equals(total, cart.total) && Objects.equals(discount, cart.discount) && Objects.equals(status, cart.status) && Objects.equals(created, cart.created) && Objects.equals(updated, cart.updated);
+        return id == cart.id && Objects.equals(status, cart.status) && Objects.equals(userid, cart.userid) && Objects.equals(paymentid, cart.paymentid) && Objects.equals(shippingid, cart.shippingid) && Objects.equals(checkoutdate, cart.checkoutdate) && Objects.equals(orderstatus, cart.orderstatus) && Objects.equals(total, cart.total) && Objects.equals(discountid, cart.discountid) && Objects.equals(shippingcost, cart.shippingcost);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userid, patientid, physicianid, repid, discountid, total, discount, status, created, updated);
+        return Objects.hash(id, status, userid, paymentid, shippingid, checkoutdate, orderstatus, total, discountid, shippingcost);
     }
 }
